@@ -1,0 +1,65 @@
+.app {
+    background-color: mediumslateblue;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    border: 0px;
+    padding-top: 5%;
+    padding-bottom: 30%;
+    margin: auto 10px;
+    width: auto;
+    height: auto;
+}
+
+h1 {
+    
+    color: magenta;
+    
+}
+
+
+.listItemsTodo {
+    padding-left: 40%;
+}
+
+.listItemsDone {
+    padding-left: 40%;
+}
+
+input[type=text] {
+    color: blueviolet;
+    height: 25px;
+    width: 200px;
+    margin: 5px;
+    border: 2px solid magenta;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+.addButton {
+    background-color: darksalmon;
+    margin: 5px;
+    animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+.addButton:hover {
+    background-color: green;
+}
+
+.deleteButton {
+    margin: 5px;
+}
+
+.taskCompletionCounter {
+    margin-top: 30px;
+    color: aqua;
+}

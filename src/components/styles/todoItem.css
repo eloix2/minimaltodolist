@@ -1,0 +1,19 @@
+.todoItem {
+    background-color: magenta;
+    color: white;
+    text-align: left;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    margin-top: 5px;
+    padding-right: 20px;
+    width: fit-content;
+    max-width: 600px;
+    overflow: hidden;
+}
+
+.doneButton {
+    background-color: aquamarine;
+    border-radius: 8px;
+    margin: 5px;
+}

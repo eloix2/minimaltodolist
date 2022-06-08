@@ -1,12 +1,14 @@
 import React, { Fragment, useState, useRef, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid'
 import { TodoList } from './components/TodoList';
+import './components/styles/App.css'
 
 const KEY = "todoApp.todos";
 
 export function App(){
     const [todos, setTodos] = useState([{id: 1, task: 'Tarea 1', completed: false}]);
-    
+    const [dones, setDones] = useState([]);
+
     const todoTaskRef = useRef();
     
     useEffect(() => {
@@ -38,18 +40,40 @@ export function App(){
         todoTaskRef.current.value = null;
     };
 
-    const handleTodoDeleteAll = () => {
+    const handleDeleteDone = () => {
         const newTodos = todos.filter((todo) => !todo.completed);
         setTodos(newTodos);
-    }
+        const newDones = todos.filter((todo) => todo.completed);
+        setDones(newDones);
+    };
+    
+    var handleKeyPress = (event) => { 
+        if(event.key === 'Enter'){
+            const task = todoTaskRef.current.value;
+            if(task === '') return;
+
+            setTodos((prevTodos) => {
+                return [... prevTodos, {id: uuidv4(), task, completed: false}]
+            });
+
+            todoTaskRef.current.value = null;
+        }
+    };
 
     return (
-        <Fragment>
-            <TodoList todos={todos} toggleTodo={toggleTodo}/>
-            <input ref={todoTaskRef} type="text" placeholder="Nueva Tarea" />
-            <button onClick={handleTodoAdd}>➕</button>
-            <button onClick={handleTodoDeleteAll}>🗑</button>
-            <div>Te quedan {todos.filter((todo) => !todo.completed).length} tareas por completar</div>
-        </Fragment>
+        <div className='app'>
+            <h1>Todo List</h1>
+            <input ref={todoTaskRef} type="text" placeholder="New Task" onKeyPress={handleKeyPress} />
+            <button className='addButton' onClick={handleTodoAdd}>➕</button>
+            <button className='deleteButton' onClick={handleDeleteDone}>🗑</button>
+            <div className='taskCompletionCounter'>You have {todos.filter((todo) => !todo.completed).length} tasks left</div>
+            
+            <div className='listItemsTodo'> 
+                <TodoList todos={todos} handleDeleteDone={handleDeleteDone} toggleTodo={toggleTodo}/>
+            </div>
+            <div className='listItemsDone'> 
+                <TodoList todos={todos} handleDeleteDone={handleDeleteDone} toggleTodo={toggleTodo}/>
+            </div>
+        </div>
     )
 }
