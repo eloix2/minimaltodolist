@@ -11,7 +11,7 @@ export function TodoItem({ todo, handleDeleteDone, toggleTodo }) {
 
     const handleDone = () => {
         toggleTodo(id);
-        handleDeleteDone(id);
+        handleDeleteDone();
     };
 
     var iscompleted = () => {
@@ -25,7 +25,6 @@ export function TodoItem({ todo, handleDeleteDone, toggleTodo }) {
   return (
       <div className='todoItem'>
             <li draggable={true}>
-                <input type= "checkbox"  checked={completed} onChange={handleTodoClick}/>
                 {task}
                 <button className='doneButton' onClick={handleTodoClick}>{completed ? "❌" : "✔" }</button>
             </li>

@@ -37,9 +37,10 @@ input[type=text] {
   }
 
 .addButton {
-    background-color: darksalmon;
+    background-color: rgb(185, 233, 122);
     margin: 5px;
     animation: rotation 2s infinite linear;
+    border-radius: 5px;
 }
 
 @keyframes rotation {
@@ -57,6 +58,11 @@ input[type=text] {
 
 .deleteButton {
     margin: 5px;
+    background-color: rgb(235, 70, 70);
+    border-radius: 5px;
+}
+.deleteButton:hover {
+    background-color: crimson;
 }
 
 .taskCompletionCounter {

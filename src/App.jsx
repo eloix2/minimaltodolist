@@ -40,8 +40,8 @@ export function App(){
         todoTaskRef.current.value = null;
     };
 
-    const handleDeleteDone = (id) => {
-        const newTodos = todos.filter((todo) => todo.id != id);
+    const handleDeleteDone = () => {
+        const newTodos = todos.filter((todo) => !todo.completed);
         setTodos(newTodos);
     };
     

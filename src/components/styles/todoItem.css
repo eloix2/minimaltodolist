@@ -7,9 +7,14 @@
     border-radius: 8px;
     margin-top: 5px;
     padding-right: 20px;
+    padding-left: 20px;
     width: fit-content;
     max-width: 600px;
     overflow: hidden;
+   
+}
+.todoItem:hover {
+    background-color: deeppink;
 }
 
 .doneButton {
@@ -17,3 +22,16 @@
     border-radius: 8px;
     margin: 5px;
 }
+.doneButton:hover {
+    background-color: blueviolet;
+    animation: 2s rotation;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
