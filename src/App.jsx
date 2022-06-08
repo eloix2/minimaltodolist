@@ -60,17 +60,20 @@ export function App(){
 
     return (
         <div className='app'>
+            <div className ='author'>
+                <text>Todo list by </text> <a href="https://github.com/eloix2">eloix2</a>
+            </div>
             <h1>Todo List</h1>
             <input ref={todoTaskRef} type="text" placeholder="New Task" onKeyPress={handleKeyPress} />
             <button className='addButton' onClick={handleTodoAdd}>➕</button>
-            <button className='deleteButton' onClick={handleDeleteDone}>🗑</button>
+            <button className='deleteButton' title="Delete All finished tasks" onClick={handleDeleteDone}>🗑</button>
             <div className='taskCompletionCounter'>You have {todos.filter((todo) => !todo.completed).length} tasks left</div>
             
             <div className='listItemsTodo'> 
                 <TodoList todos={todos.filter((todo) => !todo.completed)} handleDeleteDone={handleDeleteDone} toggleTodo={toggleTodo}/>
             </div>
 
-            <div className='taskCompletionCounter'>You have {todos.filter((todo) => todo.completed).length} tasks done</div>
+            <div className='taskCompletionCounter'>You have finished {todos.filter((todo) => todo.completed).length} tasks</div>
 
             <div className='listItemsDone'> 
                 <TodoList todos={todos.filter((todo) => todo.completed)} handleDeleteDone={handleDeleteDone} toggleTodo={toggleTodo}/>
