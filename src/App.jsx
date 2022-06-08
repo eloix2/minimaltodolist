@@ -7,7 +7,7 @@ const KEY = "todoApp.todos";
 
 export function App(){
     const [todos, setTodos] = useState([{id: 1, task: 'Tarea 1', completed: false}]);
-    const [dones, setDones] = useState([]);
+    const [dones, setDones] = useState([{id: 31231321321, task: 'Tarea 1', completed: true}]);
 
     const todoTaskRef = useRef();
     
@@ -40,11 +40,9 @@ export function App(){
         todoTaskRef.current.value = null;
     };
 
-    const handleDeleteDone = () => {
-        const newTodos = todos.filter((todo) => !todo.completed);
+    const handleDeleteDone = (id) => {
+        const newTodos = todos.filter((todo) => todo.id != id);
         setTodos(newTodos);
-        const newDones = todos.filter((todo) => todo.completed);
-        setDones(newDones);
     };
     
     var handleKeyPress = (event) => { 
@@ -69,10 +67,13 @@ export function App(){
             <div className='taskCompletionCounter'>You have {todos.filter((todo) => !todo.completed).length} tasks left</div>
             
             <div className='listItemsTodo'> 
-                <TodoList todos={todos} handleDeleteDone={handleDeleteDone} toggleTodo={toggleTodo}/>
+                <TodoList todos={todos.filter((todo) => !todo.completed)} handleDeleteDone={handleDeleteDone} toggleTodo={toggleTodo}/>
             </div>
+
+            <div className='taskCompletionCounter'>You have {todos.filter((todo) => todo.completed).length} tasks done</div>
+
             <div className='listItemsDone'> 
-                <TodoList todos={todos} handleDeleteDone={handleDeleteDone} toggleTodo={toggleTodo}/>
+                <TodoList todos={todos.filter((todo) => todo.completed)} handleDeleteDone={handleDeleteDone} toggleTodo={toggleTodo}/>
             </div>
         </div>
     )
