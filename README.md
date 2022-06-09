@@ -1,3 +1,8 @@
+# Minimal Todo List by Eloix2
+
+This project was made quite fast as a method of learning react, first i watched a tutorial on how to use react js and then i expanded the app into what is today.
+To execute the web you have to clone the repository and execute npm start on the terminal, more info below:
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
